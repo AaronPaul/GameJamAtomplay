@@ -8,17 +8,20 @@ public class Atom : MonoBehaviour {
 	public float stability;
 	private float maxStability;
 
-    private Rigidbody2D rb2D;
+    private Rigidbody rb2D;
 
     void Start() {
-        rb2D = GetComponent<Rigidbody2D>();
+        rb2D = GetComponent<Rigidbody>();
         electrons = protons;
         maxStability = 1 - 0.03f * protons;
 
         //Set atom sprite
 
         //set atom size
-	}
+        transform.localScale = new Vector2(1 + 0.2f * protons, 1 + 0.2f * protons);
+        //Update collider
+        GetComponent<SphereCollider>().radius = (1 + 0.2f * protons) / 4;
+    }
 
 	void Update () {
         //Update stability
@@ -37,6 +40,6 @@ public class Atom : MonoBehaviour {
     public GameObject electronPrefab;
     public void shoot(Vector2 direction) {
         GameObject electron = Instantiate(electronPrefab);
-        
+        electron.GetComponent<Electron>().init(direction);
     }
 }

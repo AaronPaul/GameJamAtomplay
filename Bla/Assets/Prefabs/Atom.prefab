@@ -21,7 +21,9 @@ GameObject:
   - component: {fileID: 4891063101315590}
   - component: {fileID: 212281840026769680}
   - component: {fileID: 114819157585808398}
-  - component: {fileID: 50040389809493740}
+  - component: {fileID: 114678608869277626}
+  - component: {fileID: 54463019090615900}
+  - component: {fileID: 135251600593609436}
   m_Layer: 0
   m_Name: Atom
   m_TagString: Untagged
@@ -36,32 +38,38 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1355629352504058}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -0.44, y: 0.1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!50 &50040389809493740
-Rigidbody2D:
-  serializedVersion: 4
+--- !u!54 &54463019090615900
+Rigidbody:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1355629352504058}
-  m_BodyType: 0
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
+  serializedVersion: 2
   m_Mass: 1
-  m_LinearDrag: 0
+  m_Drag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 0
-  m_Material: {fileID: 0}
+  m_UseGravity: 0
+  m_IsKinematic: 0
   m_Interpolate: 0
-  m_SleepingMode: 1
+  m_Constraints: 120
   m_CollisionDetection: 0
-  m_Constraints: 4
+--- !u!114 &114678608869277626
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1355629352504058}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cfece22c355dbc743a368e1147d2ba2a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114819157585808398
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -76,6 +84,19 @@ MonoBehaviour:
   protons: 5
   electrons: 0
   stability: 0
+  electronPrefab: {fileID: 0}
+--- !u!135 &135251600593609436
+SphereCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1355629352504058}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.5
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!212 &212281840026769680
 SpriteRenderer:
   m_ObjectHideFlags: 1
