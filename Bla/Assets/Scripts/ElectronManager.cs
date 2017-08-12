@@ -56,7 +56,6 @@ public class ElectronManager : MonoBehaviour
         else
         {
             atomElectrons.Remove(atomElectrons[0]);
-
         }
         
     }

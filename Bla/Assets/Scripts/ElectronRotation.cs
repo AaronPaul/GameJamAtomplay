@@ -14,6 +14,6 @@ public class ElectronRotation : MonoBehaviour {
     {
         int electronnumber = parentAtom.electrons;
         float angle = 360 / electronnumber; 
-        transform.Rotate(Vector3.forward,angle);
+        transform.Rotate(Vector3.forward,angle * Time.deltaTime);
     }
 }
