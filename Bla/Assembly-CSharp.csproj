@@ -51,8 +51,15 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\Scripts\AI.cs" />
      <Compile Include="Assets\Scripts\Atom.cs" />
+     <Compile Include="Assets\Scripts\AtomSpawner.cs" />
+     <Compile Include="Assets\Scripts\Edges.cs" />
      <Compile Include="Assets\Scripts\Electron.cs" />
+     <Compile Include="Assets\Scripts\Elements.cs" />
+     <Compile Include="Assets\Scripts\MasterHandler.cs" />
+     <Compile Include="Assets\Scripts\Menu\menu.cs" />
+     <Compile Include="Assets\Scripts\PlayArea.cs" />
      <Compile Include="Assets\Scripts\PlayerController.cs" />
  <Reference Include="UnityEngine.UI">
  <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
