@@ -40,9 +40,9 @@ public class Atom : MonoBehaviour {
         }
 	}
 
-	public void move (Vector2 direction) {
+    public void move(Vector2 direction) {
         //Decrease movespeed with scale
-        rb2D.MovePosition(rb2D.transform.position + (Vector3)direction);
+        rb2D.MovePosition(rb2D.transform.position + ((Vector3)direction * 0.6f));
     }
 
     public GameObject electronPrefab;

@@ -23,7 +23,6 @@ public class ElectronManager : MonoBehaviour
     {
         float targetNumberOfElectrons = atom.electrons;
         float numberOfSpawnnedElectron = atomElectrons.Count;
-        print(targetNumberOfElectrons + "   " + numberOfSpawnnedElectron);
         if (numberOfSpawnnedElectron == targetNumberOfElectrons)
         {
             return;
