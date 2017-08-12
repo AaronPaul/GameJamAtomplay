@@ -31,6 +31,8 @@ public class AI : MonoBehaviour {
 
         if(Time.time > nextShootTime) {
             //Shoot
+            Vector2 direction = Quaternion.AngleAxis(Random.Range(0, 360), Vector3.forward) * Vector3.right;
+            atom.shoot(direction);
             nextShootTime = Time.time + Random.Range(3f,30f);
         }
 

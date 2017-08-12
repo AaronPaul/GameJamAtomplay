@@ -7,7 +7,7 @@ public class Atom : MonoBehaviour {
 	public int electrons;
 	public float stability;
 	private float maxStability;
-    private float radius;
+    public float radius;
 
     private Rigidbody rb2D;
     bool initialized = false;
@@ -34,9 +34,9 @@ public class Atom : MonoBehaviour {
         }
         //Update stability
         if (protons == electrons) {
-            stability = Mathf.Clamp(stability + (1f * Time.deltaTime), 0, maxStability);
+            stability = Mathf.Clamp(stability + (0.5f * (1f * Time.deltaTime)), 0, maxStability);
         } else {
-            stability = Mathf.Clamp(stability - ((1f + 0.4f * Mathf.Abs(protons - electrons)) * Time.deltaTime), 0, maxStability);
+            stability = Mathf.Clamp(stability - (0.5f * ((1f + 0.4f * Mathf.Abs(protons - electrons))) * Time.deltaTime), 0, maxStability);
         }
 
         if (stability == 0) {
@@ -49,6 +49,7 @@ public class Atom : MonoBehaviour {
     public void move(Vector2 direction) {
         //Decrease movespeed with scale
         rb2D.MovePosition(rb2D.transform.position + ((Vector3)direction * 0.6f));
+        transform.position = new Vector2(Mathf.Clamp(transform.position.x, MasterHandler.playArea.edges.left, MasterHandler.playArea.edges.right), Mathf.Clamp(transform.position.y, MasterHandler.playArea.edges.bottom, MasterHandler.playArea.edges.top));
     }
 
     public GameObject electronPrefab;

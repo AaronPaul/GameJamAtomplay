@@ -32,11 +32,11 @@ public class ElectronManager : MonoBehaviour
         {
             if (numberOfSpawnnedElectron == 0)
             {
-                for (int i = 0; i < atom.electrons; i++)
-                {
+                for (int i = 0; i < atom.electrons; i++) {
                     GameObject electron = (GameObject)Instantiate(electronPrefab, transform.position, Quaternion.identity, transform);
                     var q = Quaternion.AngleAxis(angle * i, Vector3.forward);
                     Vector3 currentPos = transform.position;
+                    distance = atom.radius * 2 + 0.5f;
                     electron.transform.position = currentPos + q * Vector3.right * distance;
                     electron.transform.localScale = electron.transform.localScale / atom.transform.localScale.x;
                     atomElectrons.Add(electron);
@@ -51,6 +51,7 @@ public class ElectronManager : MonoBehaviour
                     GameObject electron = (GameObject)Instantiate(electronPrefab, transform.position, Quaternion.identity, transform);
                     var q = Quaternion.AngleAxis(angle * i, Vector3.forward);
                     Vector3 currentPos = transform.position;
+                    distance = atom.radius * 2 + 0.5f;
                     electron.transform.position = currentPos + q * Vector3.right * distance;
                     electron.transform.localScale = electron.transform.localScale / atom.transform.localScale.x;
                     atomElectrons.Add(electron);
@@ -67,6 +68,7 @@ public class ElectronManager : MonoBehaviour
             {
                 var q = Quaternion.AngleAxis(angle * i, Vector3.forward);
                 Vector3 currentPos = transform.position;
+                distance = atom.radius * 2 + 0.5f;
                 atomElectrons[i].transform.position = currentPos + q * Vector3.right * distance;
             }
         }
