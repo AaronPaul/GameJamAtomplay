@@ -9,8 +9,8 @@ public class Edges {
     public float bottom;
 
     public Edges (Vector2 center, Vector2 size) {
-        right = center.x - (size.x / 2);
-        left = center.x + (size.x / 2);
+        right = center.x + (size.x / 2);
+        left = center.x - (size.x / 2);
         bottom = center.y - (size.y / 2);
         top = center.y + (size.y / 2);
     }
