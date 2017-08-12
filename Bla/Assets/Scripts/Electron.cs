@@ -5,15 +5,15 @@ using UnityEngine;
 public class Electron : MonoBehaviour
 {
     public float velocity = 1f;
-    public Vector3 direction = Vector3.zero;
+    private Vector3 direction = Vector3.zero;
 
 	// Use this for initialization
 	void Start () {
 		
 	}
 
-    public void init(Vector2 direction) {
-
+    public void init(Vector2 _direction) {
+        direction = _direction;
     }
 	
 	// Update is called once per frame
