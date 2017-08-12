@@ -23,6 +23,7 @@ public class ElectronManager : MonoBehaviour
     {
         float targetNumberOfElectrons = atom.electrons;
         float numberOfSpawnnedElectron = atomElectrons.Count;
+        print(targetNumberOfElectrons + "   " + numberOfSpawnnedElectron);
         if (numberOfSpawnnedElectron == targetNumberOfElectrons)
         {
             return;
@@ -38,6 +39,7 @@ public class ElectronManager : MonoBehaviour
                     var q = Quaternion.AngleAxis(angle * i, Vector3.forward);
                     Vector3 currentPos = transform.position;
                     electron.transform.position = currentPos + q * Vector3.right * distance;
+                    electron.transform.localScale = electron.transform.localScale / atom.transform.localScale.x;
                     atomElectrons.Add(electron);
                 }
 
@@ -48,6 +50,10 @@ public class ElectronManager : MonoBehaviour
                 for (int i = 0; i < count; i++)
                 {
                     GameObject electron = (GameObject)Instantiate(electronPrefab, transform.position, Quaternion.identity, transform);
+                    var q = Quaternion.AngleAxis(angle * i, Vector3.forward);
+                    Vector3 currentPos = transform.position;
+                    electron.transform.position = currentPos + q * Vector3.right * distance;
+                    electron.transform.localScale = electron.transform.localScale / atom.transform.localScale.x;
                     atomElectrons.Add(electron);
                 }
             }
@@ -55,7 +61,15 @@ public class ElectronManager : MonoBehaviour
         }
         else
         {
+            KillItem electronKill = atomElectrons[0].GetComponent<KillItem>();
+            electronKill.KillObject();
             atomElectrons.Remove(atomElectrons[0]);
+            for (int i = 0; i < targetNumberOfElectrons; i++)
+            {
+                var q = Quaternion.AngleAxis(angle * i, Vector3.forward);
+                Vector3 currentPos = transform.position;
+                atomElectrons[i].transform.position = currentPos + q * Vector3.right * distance;
+            }
         }
         
     }

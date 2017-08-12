@@ -13,6 +13,10 @@ public class ElectronRotation : MonoBehaviour {
     void FixedUpdate()
     {
         int electronnumber = parentAtom.electrons;
+        if (electronnumber == 0)
+        {
+            return;
+        }
         float angle = 360 / electronnumber; 
         transform.Rotate(Vector3.forward,angle * Time.deltaTime);
     }
