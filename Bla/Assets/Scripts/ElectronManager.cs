@@ -7,7 +7,7 @@ public class ElectronManager : MonoBehaviour
     Atom atom;
     List<GameObject> atomElectrons = new List<GameObject>();
     public GameObject electronPrefab;
-    float distance = 10;
+    float distance = 5;
 	// Use this for initialization
 	void Start ()
     {
@@ -21,25 +21,26 @@ public class ElectronManager : MonoBehaviour
 	// Update is called once per frame
 	void Update ()
     {
+        float targetNumberOfElectrons = atom.electrons;
         float numberOfSpawnnedElectron = atomElectrons.Count;
-        if (numberOfSpawnnedElectron == atom.electrons)
+        if (numberOfSpawnnedElectron == targetNumberOfElectrons)
         {
             return;
         }
-        float angle = 360 / numberOfSpawnnedElectron;
-        if (atom.electrons > numberOfSpawnnedElectron)
+        float angle = 360 / targetNumberOfElectrons;
+        if (targetNumberOfElectrons > numberOfSpawnnedElectron)
         {
             if (numberOfSpawnnedElectron == 0)
             {
-                print(atomElectrons.Count);
-                for (int i = 0; i < atomElectrons.Count; i++)
+                for (int i = 0; i < atom.electrons; i++)
                 {
                     GameObject electron = (GameObject)Instantiate(electronPrefab, transform.position, Quaternion.identity, transform);
-                    var q = Quaternion.AngleAxis(angle, Vector3.forward);
+                    var q = Quaternion.AngleAxis(angle * i, Vector3.forward);
                     Vector3 currentPos = transform.position;
                     electron.transform.position = currentPos + q * Vector3.right * distance;
                     atomElectrons.Add(electron);
                 }
+
             }
             else
             {
@@ -57,5 +58,6 @@ public class ElectronManager : MonoBehaviour
             atomElectrons.Remove(atomElectrons[0]);
 
         }
+        
     }
 }
