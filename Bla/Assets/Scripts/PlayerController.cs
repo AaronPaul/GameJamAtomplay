@@ -8,13 +8,17 @@ public class PlayerController : MonoBehaviour {
 	void Start () {
         atom = GetComponent<Atom>();
 	}
-	
-	// Update is called once per frame
-	void FixedUpdate () {
+
+    private bool fire = false;
+    // Update is called once per frame
+    void FixedUpdate() {
         atom.move(new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical")));
-        if(Input.GetAxis("Fire") > 0.5f) {
+        if (!fire && Input.GetAxis("Fire") > 0.5f) {
             //Fire
+            fire = true;
             atom.shoot(new Vector2(Input.GetAxis("HorizontalView"), Input.GetAxis("VerticalView")));
+        } else {
+            fire = false;
         }
     }
 }
