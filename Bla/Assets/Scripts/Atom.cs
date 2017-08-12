@@ -10,22 +10,28 @@ public class Atom : MonoBehaviour {
     private float radius;
 
     private Rigidbody rb2D;
+    bool initialized = false;
 
-    void Start() {
+    public void init() {
         rb2D = GetComponent<Rigidbody>();
         electrons = protons;
         maxStability = 1 - 0.03f * protons;
 
         //Set atom sprite
+        GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>(Elements.getElementName(protons));
 
         //set atom size
         transform.localScale = new Vector2(1 + 0.2f * protons, 1 + 0.2f * protons);
         //Update collider
         radius = (1 + 0.2f * protons) / 4;
         GetComponent<SphereCollider>().radius = radius;
+        initialized = true;
     }
 
 	void Update () {
+        if(!initialized) {
+            return;
+        }
         //Update stability
         if (protons == electrons) {
             stability = Mathf.Clamp(stability + (1f * Time.deltaTime), 0, maxStability);

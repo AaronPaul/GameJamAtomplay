@@ -7,6 +7,7 @@ public class PlayerController : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
         atom = GetComponent<Atom>();
+        atom.init();
 	}
 
     private bool fire = false;
