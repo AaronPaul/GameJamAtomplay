@@ -58,6 +58,7 @@
      <Compile Include="Assets\Scripts\Electron.cs" />
      <Compile Include="Assets\Scripts\ElectronManager.cs" />
      <Compile Include="Assets\Scripts\ElectronRotation.cs" />
+     <Compile Include="Assets\Scripts\ElectronSpawner.cs" />
      <Compile Include="Assets\Scripts\Elements.cs" />
      <Compile Include="Assets\Scripts\MasterHandler.cs" />
      <Compile Include="Assets\Scripts\Menu\menu.cs" />

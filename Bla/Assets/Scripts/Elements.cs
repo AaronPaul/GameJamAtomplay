@@ -7,7 +7,7 @@ public static class Elements {
         if(System.Enum.IsDefined(typeof(Element), id)) {
             return ((Element)id).ToString();
         } else {
-            return "";
+            return "AtomPlaceHolder";
         }
     }
 }
@@ -16,5 +16,10 @@ public enum Element {
     Wasserstoff = 1,
     Helium = 2,
     Lithium = 3,
-    Beryllium = 4
+    Beryllium = 4,
+    Bor = 5,
+    Kohlenstoff = 6,
+    Stickstoff = 7,
+    Sauerstoff = 8,
+    Einsteinium = 99
 }
