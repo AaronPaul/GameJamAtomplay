@@ -11,6 +11,7 @@ Thumbs.db
 Builds/
 Library/
 Temp/
+EditorSettings.asset
 
 # Visual Studio / MonoDevelop
 ExportedObj/
