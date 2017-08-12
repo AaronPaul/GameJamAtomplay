@@ -42,7 +42,7 @@ public class Atom : MonoBehaviour {
     public GameObject electronPrefab;
     public void shoot(Vector2 direction) {
         Debug.Log((Vector3.Normalize(direction) * ((radius * 2f) + 0.25f)));
-        if (direction != Vector2.zero && electrons < 0) {
+        if (direction != Vector2.zero && electrons > 0) {
             electrons--;
             GameObject electron = Instantiate(electronPrefab);
             electron.transform.position = (Vector2)(transform.position + (Vector3.Normalize(direction) * ((radius * 2f) + 0.25f)));

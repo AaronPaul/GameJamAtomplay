@@ -17,7 +17,9 @@ public class PlayerController : MonoBehaviour {
             //Fire
             fire = true;
             atom.shoot(new Vector2(Input.GetAxis("HorizontalView"), Input.GetAxis("VerticalView")));
-        } else {
+        } 
+
+        if (Input.GetAxis("Fire") < 0.5f) {
             fire = false;
         }
     }
