@@ -23,7 +23,6 @@ GameObject:
   - component: {fileID: 114819157585808398}
   - component: {fileID: 54463019090615900}
   - component: {fileID: 135251600593609436}
-  - component: {fileID: 114697379638821692}
   - component: {fileID: 114267698512544100}
   m_Layer: 0
   m_Name: Atom
@@ -41,7 +40,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4294802881759208}
   - component: {fileID: 114291697983596302}
-  - component: {fileID: 114803695992670398}
   - component: {fileID: 114518156093678596}
   m_Layer: 0
   m_Name: ElectronManager
@@ -117,28 +115,6 @@ MonoBehaviour:
   electronPrefab: {fileID: 1567628788324838, guid: 8be96fc34163a3641b0916d942c5584a,
     type: 2}
 --- !u!114 &114518156093678596
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1393157532369002}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a775f23b120cb1c4d9023149d0bf7ef7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &114697379638821692
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1355629352504058}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cfece22c355dbc743a368e1147d2ba2a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &114803695992670398
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}

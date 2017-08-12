@@ -40,6 +40,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4294802881759208}
   - component: {fileID: 114291697983596302}
+  - component: {fileID: 114392785623055754}
   m_Layer: 0
   m_Name: ElectronManager
   m_TagString: Untagged
@@ -100,8 +101,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a3c52aa10b213114ebc313fd5ffb9d44, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  electronPrefab: {fileID: 1567628788324838, guid: 2c466aa839f745c48bc0c715746eaaef,
+  electronPrefab: {fileID: 1567628788324838, guid: 8be96fc34163a3641b0916d942c5584a,
     type: 2}
+--- !u!114 &114392785623055754
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1393157532369002}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a775f23b120cb1c4d9023149d0bf7ef7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114429385200947762
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -127,7 +139,8 @@ MonoBehaviour:
   protons: 5
   electrons: 0
   stability: 0
-  electronPrefab: {fileID: 0}
+  electronPrefab: {fileID: 1567628788324838, guid: 17c67f23189381c4b91e88bd34c89c6f,
+    type: 2}
 --- !u!135 &135251600593609436
 SphereCollider:
   m_ObjectHideFlags: 1

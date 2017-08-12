@@ -38,6 +38,12 @@ public class Atom : MonoBehaviour {
         } else {
             stability = Mathf.Clamp(stability - ((1f + 0.4f * Mathf.Abs(protons - electrons)) * Time.deltaTime), 0, maxStability);
         }
+
+        if (stability == 0) {
+            if(GetComponent<PlayerController>() == null) {
+                Destroy(gameObject);
+            }
+        }
 	}
 
     public void move(Vector2 direction) {
