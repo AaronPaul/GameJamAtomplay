@@ -22,7 +22,7 @@ GameObject:
   - component: {fileID: 212538440432396626}
   - component: {fileID: 114956425282468384}
   m_Layer: 0
-  m_Name: ElectronRotate
+  m_Name: Electron
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
