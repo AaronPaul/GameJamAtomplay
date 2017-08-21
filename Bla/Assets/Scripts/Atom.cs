@@ -3,18 +3,22 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Atom : MonoBehaviour {
-	public int protons = 5;
-	public int electrons;
+	private int protons = 5;
+	private int electrons;
 	public float stability;
 	private float maxStability;
     public float radius;
 
-    private Rigidbody rb2D;
+    private Rigidbody2D rb2D;
     bool initialized = false;
 
-    public void init() {
-        rb2D = GetComponent<Rigidbody>();
+    private ElectronRotator rotator;
+
+    public void init(int _protons = 5) {
+        protons = _protons;
         electrons = protons;
+        rb2D = GetComponent<Rigidbody2D>();
+        rotator = gameObject.AddComponent<ElectronRotator>();
         maxStability = 1 - 0.03f * protons;
 
         //Set atom sprite
@@ -23,8 +27,8 @@ public class Atom : MonoBehaviour {
         //set atom size
         transform.localScale = new Vector2(1 + 0.2f * protons, 1 + 0.2f * protons);
         //Update collider
-        radius = (1 + 0.2f * protons) / 4;
-        GetComponent<SphereCollider>().radius = radius;
+        radius = 0.25f;
+        GetComponent<CircleCollider2D>().radius = radius;
         initialized = true;
     }
 
@@ -54,12 +58,25 @@ public class Atom : MonoBehaviour {
 
     public GameObject electronPrefab;
     public void shoot(Vector2 direction) {
-        Debug.Log((Vector3.Normalize(direction) * ((radius * 2f) + 0.25f)));
         if (direction != Vector2.zero && electrons > 0) {
-            electrons--;
+            removeElectron();
             GameObject electron = Instantiate(electronPrefab);
-            electron.transform.position = (Vector2)(transform.position + (Vector3.Normalize(direction) * ((radius * 2f) + 0.25f)));
+            electron.transform.position = (Vector2)(transform.position + (Vector3.Normalize(direction) * ((1 + 0.2f * protons) / 2 + 0.3f)));
             electron.GetComponent<Electron>().init(direction);
         }
+    }
+
+    public void addElectron() {
+        electrons++;
+        rotator.updateElectrons();
+    }
+
+    public void removeElectron() {
+        electrons--;
+        rotator.updateElectrons();
+    }
+
+    public int electronCount() {
+        return electrons;
     }
 }
