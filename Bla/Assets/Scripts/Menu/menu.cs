@@ -13,7 +13,7 @@ public class menu : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		if(Input.GetKey(KeyCode.Joystick1Button0)) {
-            SceneManager.LoadScene("Test");
+            SceneManager.LoadScene("Game");
         }
 	}
 }
