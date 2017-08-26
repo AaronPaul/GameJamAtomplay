@@ -9,6 +9,6 @@ public class parallexBackground : MonoBehaviour {
     }
 
     void FixedUpdate () {
-        transform.position = player.position / 5;
+        transform.position = player.position / 5 + new Vector3(0,0,1);
 	}
 }

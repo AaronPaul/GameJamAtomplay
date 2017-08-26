@@ -18,7 +18,6 @@ public class Atom : MonoBehaviour {
         protons = _protons;
         electrons = protons;
         rb2D = GetComponent<Rigidbody2D>();
-        rotator = gameObject.AddComponent<ElectronRotator>();
         maxStability = 1 - 0.03f * protons;
 
         //Set atom sprite
@@ -29,6 +28,8 @@ public class Atom : MonoBehaviour {
         //Update collider
         radius = 0.25f;
         GetComponent<CircleCollider2D>().radius = radius;
+
+        rotator = gameObject.AddComponent<ElectronRotator>();
         initialized = true;
     }
 
@@ -51,12 +52,9 @@ public class Atom : MonoBehaviour {
 	}
 
     public void move(Vector2 direction) {
-        Debug.Log(direction);
         //Decrease movespeed with scale
         Vector3 newPos = rb2D.transform.position + ((Vector3)direction * 0.6f);
         newPos = new Vector2(Mathf.Clamp(newPos.x, MasterHandler.playArea.edges.left, MasterHandler.playArea.edges.right), Mathf.Clamp(newPos.y, MasterHandler.playArea.edges.bottom, MasterHandler.playArea.edges.top));
-        Debug.Log(newPos);
-        Debug.Log(rb2D.transform.position);
         rb2D.MovePosition(newPos);
     }
 

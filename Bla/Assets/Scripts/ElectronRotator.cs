@@ -13,6 +13,7 @@ public class ElectronRotator : MonoBehaviour {
         rotator.name = "RotationParent";
         rotator.transform.SetParent(atom.transform);
         rotator.transform.localPosition = new Vector2(0,0);
+        rotator.transform.localScale = new Vector2(0.8f, 0.8f);
         electronPrefab = Resources.Load<GameObject>("Prefabs/ElectronRotate");
         updateElectrons();
     }
@@ -27,13 +28,16 @@ public class ElectronRotator : MonoBehaviour {
         
         if (electronCount < childCount) {
             for (int i = 0; i < childCount - electronCount; i++) {
+                //Destroy Electron
                 GameObject child = rotator.transform.GetChild(i).gameObject;
                 child.transform.SetParent(null);
                 Destroy(child);
             }
         } else if (electronCount > childCount) {
             for(int i = 0; i < electronCount - childCount; i++) {
+                //Create new electron
                 GameObject electron = Instantiate(electronPrefab);
+                electron.transform.localScale = new Vector2(0.5f, 0.5f);
                 electron.transform.SetParent(rotator.transform);
             }
         }
