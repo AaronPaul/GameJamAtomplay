@@ -14,11 +14,14 @@ public class PlayerController : MonoBehaviour {
     // Update is called once per frame
     void FixedUpdate() {
         atom.move(new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical")));
+    }
+
+    void Update() {
         if (!fire && Input.GetAxis("Fire") > 0.5f) {
             //Fire
             fire = true;
             atom.shoot(new Vector2(Input.GetAxis("HorizontalView"), Input.GetAxis("VerticalView")));
-        } 
+        }
 
         if (Input.GetAxis("Fire") < 0.5f) {
             fire = false;

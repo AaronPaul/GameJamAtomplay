@@ -54,11 +54,9 @@
      <Compile Include="Assets\Scripts\AI.cs" />
      <Compile Include="Assets\Scripts\Atom.cs" />
      <Compile Include="Assets\Scripts\AtomSpawner.cs" />
-     <Compile Include="Assets\Scripts\AtomtriggerScript.cs" />
      <Compile Include="Assets\Scripts\Edges.cs" />
      <Compile Include="Assets\Scripts\Electron.cs" />
-     <Compile Include="Assets\Scripts\ElectronManager.cs" />
-     <Compile Include="Assets\Scripts\ElectronRotation.cs" />
+     <Compile Include="Assets\Scripts\ElectronRotator.cs" />
      <Compile Include="Assets\Scripts\ElectronSpawner.cs" />
      <Compile Include="Assets\Scripts\Elements.cs" />
      <Compile Include="Assets\Scripts\KillItem.cs" />
