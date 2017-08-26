@@ -48,13 +48,13 @@ public class Atom : MonoBehaviour {
 
     public void move(Vector2 direction) {
         //Decrease movespeed with scale
-        rb2D.MovePosition(rb2D.transform.position + ((Vector3)direction * 0.6f));
-        transform.position = new Vector2(Mathf.Clamp(transform.position.x, MasterHandler.playArea.edges.left, MasterHandler.playArea.edges.right), Mathf.Clamp(transform.position.y, MasterHandler.playArea.edges.bottom, MasterHandler.playArea.edges.top));
+        Vector3 newPos = rb2D.transform.position + ((Vector3)direction * 0.6f);
+        newPos = new Vector2(Mathf.Clamp(newPos.x, MasterHandler.playArea.edges.left, MasterHandler.playArea.edges.right), Mathf.Clamp(newPos.y, MasterHandler.playArea.edges.bottom, MasterHandler.playArea.edges.top));
+        rb2D.MovePosition(newPos);
     }
 
     public GameObject electronPrefab;
     public void shoot(Vector2 direction) {
-        Debug.Log((Vector3.Normalize(direction) * ((radius * 2f) + 0.25f)));
         if (direction != Vector2.zero && electrons > 0) {
             electrons--;
             GameObject electron = Instantiate(electronPrefab);
