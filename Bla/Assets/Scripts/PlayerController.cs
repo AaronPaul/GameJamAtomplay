@@ -5,21 +5,24 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour {
     Atom atom;
     GameObject shootDirection;
+
+    InputSource inputSource;
 	// Use this for initialization
 	void Start () {
         atom = GetComponent<Atom>();
         atom.init();
         shootDirection = createShootDirection();
+        inputSource = new inputMobile();
 	}
 
     private bool fire = false;
     // Update is called once per frame
     void FixedUpdate() {
-        atom.move(new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical")));
+        atom.move(inputSource.moveAxis());
     }
 
     void Update() {
-        Vector2 input = new Vector2(Input.GetAxis("HorizontalView"), Input.GetAxis("VerticalView"));
+        Vector2 input = inputSource.shootAxis();
 
         if (Mathf.Abs(input.x) < 0.3f && Mathf.Abs(input.y) < 0.3f) {
             shootDirection.GetComponent<LineRenderer>().widthMultiplier = 0;
@@ -28,13 +31,13 @@ public class PlayerController : MonoBehaviour {
             shootDirection.transform.localEulerAngles = new Vector3(0, 0, Vector2.SignedAngle(Vector2.up, input));
         }
 
-        if (!fire && Input.GetAxis("Fire") > 0.5f) {
+        if (!fire && inputSource.shoot()) {
             //Fire
             fire = true;
             atom.shoot(input);
         }
 
-        if (Input.GetAxis("Fire") < 0.5f) {
+        if (!inputSource.shoot()) {
             fire = false;
         }
     }

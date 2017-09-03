@@ -5,12 +5,14 @@ using UnityEngine;
 public class Atom : MonoBehaviour {
 	private int protons = 5;
 	private int electrons;
-	public float stability;
+	public float stabilityValue;
 	private float maxStability;
     public float radius;
 
     private Rigidbody2D rb2D;
     bool initialized = false;
+
+    private Stability stability;
 
     private ElectronRotator rotator;
 
@@ -19,6 +21,7 @@ public class Atom : MonoBehaviour {
         electrons = protons;
         rb2D = GetComponent<Rigidbody2D>();
         maxStability = 1 - 0.03f * protons;
+        stabilityValue = maxStability;
 
         //Set atom sprite
         GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>(Elements.getElementName(protons));
@@ -30,6 +33,7 @@ public class Atom : MonoBehaviour {
         GetComponent<CircleCollider2D>().radius = radius;
 
         rotator = gameObject.AddComponent<ElectronRotator>();
+        stability = new Stability(gameObject, maxStability);
         initialized = true;
     }
 
@@ -39,23 +43,35 @@ public class Atom : MonoBehaviour {
         }
         //Update stability
         if (protons == electrons) {
-            stability = Mathf.Clamp(stability + (0.5f * (1f * Time.deltaTime)), 0, maxStability);
+            stabilityValue = Mathf.Clamp(stabilityValue + (0.25f * Time.deltaTime), 0, maxStability);
         } else {
-            stability = Mathf.Clamp(stability - (0.5f * ((1f + 0.4f * Mathf.Abs(protons - electrons))) * Time.deltaTime), 0, maxStability);
+            stabilityValue = Mathf.Clamp(stabilityValue - (0.25f * (0.6f + 0.4f * Mathf.Abs(protons - electrons)) * Time.deltaTime), 0, maxStability);
+        }
+        
+        if (stability != null) {
+            stability.setStability(stabilityValue);
         }
 
-        if (stability == 0) {
+        if (stabilityValue == 0) {
             if(GetComponent<PlayerController>() == null) {
-                Destroy(gameObject);
+                destroy();
             }
         }
 	}
 
+    public void destroy() {
+        stability.destroy();
+        Destroy(gameObject);
+    }
+
     public void move(Vector2 direction) {
         //Decrease movespeed with scale
-        Vector3 newPos = rb2D.transform.position + ((Vector3)direction * 0.6f);
+        Vector3 newPos = rb2D.transform.position + ((Vector3)direction * 0.3f);
         newPos = new Vector2(Mathf.Clamp(newPos.x, MasterHandler.playArea.edges.left, MasterHandler.playArea.edges.right), Mathf.Clamp(newPos.y, MasterHandler.playArea.edges.bottom, MasterHandler.playArea.edges.top));
         rb2D.MovePosition(newPos);
+        if(stability != null) {
+            stability.updatePos(rb2D.transform.position);
+        }
     }
 
     public GameObject electronPrefab;
